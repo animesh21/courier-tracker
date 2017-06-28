@@ -1,22 +1,26 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Courier Service
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<!--<ion-header>-->
+  <!--<ion-navbar>-->
+    <!--<ion-title>-->
+      <!--<img src="./assets/images/hamama_logo.png">-->
+    <!--</ion-title>-->
+  <!--</ion-navbar>-->
+<!--</ion-header>-->
 
 <ion-content padding>
-  <p>Login to your account</p>
-  <form [formGroup]="login" (ngSubmit)="loginUser()">
-    <ion-item>
-      <ion-label for="email">Email</ion-label>
-      <ion-input type="text" formControlName="email" placeholder="e.g. name@example.com"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label for="password">Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
-    <button ion-button block type="submit" [disabled]="!login.valid">Submit</button>
-  </form>
+  <div>
+    <img id="logo" src="./assets/images/hamama_logo.png">
+  </div>
+  <div id="login-form">
+    <form [formGroup]="login" (ngSubmit)="loginUser()">
+      <ion-item>
+        <ion-label for="email">Email</ion-label>
+        <ion-input type="text" formControlName="email" placeholder="e.g. name@example.com"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label for="password">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <button ion-button full primary type="submit" [disabled]="!login.valid">Login</button>
+    </form>
+  </div>
 </ion-content>

@@ -1,0 +1,35 @@
+<!--
+  Generated template for the LocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--<ion-header>-->
+
+  <!--<ion-navbar>-->
+    <!--<ion-title>-->
+      <!--<img src="./assets/images/hamama_logo.png" alt="logo">-->
+    <!--</ion-title>-->
+    <!--<ion-buttons end>-->
+      <!--<button ion-button primary block (click)="logoutUser()">Logout</button>-->
+    <!--</ion-buttons>-->
+
+  <!--</ion-navbar>-->
+
+<!--</ion-header>-->
+
+<ion-content padding>
+  <div class="top">
+    <img id="logo" src="./assets/images/hamama_logo.png">
+    <ion-buttons end>
+      <button ion-button primary (click)="logoutUser()">Logout</button>
+    </ion-buttons>
+  </div>
+  <div class="body">
+  <p>Hi, {{ name }}</p>
+  <ion-label text-center>Current Latitude: {{ locationServiceProvider.lat }}</ion-label>
+  <ion-label text-center>Current Longitude: {{ locationServiceProvider.lng }}</ion-label>
+  <button ion-button full primary (click)="start()">Start Tracking</button>
+  <button ion-button full primary (click)="stop()">Stop Tracking</button>
+  </div>
+</ion-content>

@@ -1,4 +1,5 @@
-page-home {
+page-location {
+
   img#logo {
     position: absolute;
     left: 0;
@@ -7,11 +8,13 @@ page-home {
     top: 10%;
   }
 
-  div#login-form {
+  div.body {
     position: absolute;
     top: 30%;
     left: 0;
     right: 0;
     margin: 0 auto;
   }
+
+
 }
