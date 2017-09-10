@@ -3,7 +3,9 @@ import {AlertController, LoadingController, NavController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RemoteServiceProvider} from "../../providers/remote-service/remote-service";
 import {LocationPage} from '../location/location';
-import {Storage} from '@ionic/storage'
+import {Storage} from '@ionic/storage';
+import {Platform} from 'ionic-angular';
+import {VideoPlayer} from '@ionic-native/video-player';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +22,9 @@ export class HomePage {
               public remoteServiceProvider: RemoteServiceProvider,
               public storage: Storage,
               public loadingCtrl: LoadingController,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public videoPlayer: VideoPlayer,
+              public platform: Platform) {
     this.storage.get('name').then((value) => {
       if (value) {
         console.log('name in login view: ' + value);
@@ -39,7 +43,7 @@ export class HomePage {
     });
   }
 
-  loginUser() {
+  public loginUser() {
     let email = this.login.value.email;
     let password = this.login.value.password;
     let loading = this.loadingCtrl.create({
@@ -99,9 +103,27 @@ export class HomePage {
             });
         }
       }, (error) => {
-        console.error('Can not login, error: ' + error);
+        console.error('Can not login, error: ' + JSON.stringify(error));
       });
 
 
+  }
+
+  public playVideo() {
+    this.platform.ready().then((rdySrc) => {
+      console.log('platform ready hai');
+      this.videoPlayer.play('file:///android_asset/www/assets/videos/sample_4x.mp4').then(() => {
+        console.log('Done with playing video');
+      }).catch(err => {
+        console.log('Error in video: ' + JSON.stringify(err));
+      });
+    }, (err) => {
+      console.log('Erro in platform load: ' + JSON.stringify(err));
+    });
+  }
+
+  ionViewDidLoad() {
+    console.log('home view loaded');
+    // this.playVideo();
   }
 }

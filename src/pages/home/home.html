@@ -5,22 +5,26 @@
     <!--</ion-title>-->
   <!--</ion-navbar>-->
 <!--</ion-header>-->
-
 <ion-content padding>
-  <div>
-    <img id="logo" src="./assets/images/hamama_logo.png">
-  </div>
-  <div id="login-form">
-    <form [formGroup]="login" (ngSubmit)="loginUser()">
-      <ion-item>
-        <ion-label for="email">Email</ion-label>
-        <ion-input type="text" formControlName="email" placeholder="e.g. name@example.com"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label for="password">Password</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
-      </ion-item>
-      <button ion-button full primary type="submit" [disabled]="!login.valid">Login</button>
-    </form>
-  </div>
+    <div>
+      <img id="logo" src="./assets/images/hamama_logo.png">
+    </div>
+    <div id="login-form">
+      <form [formGroup]="login" (ngSubmit)="loginUser()">
+        <ion-item>
+          <ion-label for="email">Email</ion-label>
+          <ion-input type="text" formControlName="email" placeholder="e.g. name@example.com"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label for="password">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <button ion-button full primary type="submit" [disabled]="!login.valid">Login</button>
+        <!--<button ion-button full primary type="button" (click)="playVideo()">Play</button>-->
+      </form>
+    </div>
+    <video autoplay loop id="video-background" muted plays-inline>
+      <!--<source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4">-->
+      <source src="./assets/videos/sample_2x.mp4" type="video/mp4">
+    </video>
 </ion-content>

@@ -3,6 +3,8 @@ import {IonicPage, LoadingController, NavController} from 'ionic-angular';
 import {LocationServiceProvider} from '../../providers/location-service/location-service';
 import {HomePage} from '../home/home';
 import {Storage} from '@ionic/storage';
+import {RemoteServiceProvider} from "../../providers/remote-service/remote-service";
+import {ChatPage} from "../chat/chat";
 
 /**
  * Generated class for the LocationPage page.
@@ -21,10 +23,13 @@ export class LocationPage {
   public homePage = HomePage;
   private name: string;
 
+  messageLog = '';
+
   constructor(public navCtrl: NavController,
               public locationServiceProvider: LocationServiceProvider,
               public storage: Storage,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public remoteServiceProvider: RemoteServiceProvider) {
     this.storage.get('name').then((value) => {
       if (value) {
         this.name = value;
@@ -47,6 +52,41 @@ export class LocationPage {
 
   stop() {
     this.locationServiceProvider.stopTracking();
+  }
+
+  // chat functions
+  sendMessage(message) {
+    let user_id: any;
+
+    this.storage.get('user_id').then((res) => {
+      user_id = res;
+      this.remoteServiceProvider.sendMessage(user_id, message).subscribe((res) => {
+        console.log('Successfully sent the message: ' + JSON.stringify(res));
+        this.messageLog += ("/n" + message);
+      });
+    }, (err) => {
+      console.error("error in db: " + JSON.stringify(err));
+    });
+  }
+
+  getMessage() {
+    let user_id: any;
+
+    this.storage.get('user_id').then((res) => {
+      user_id = res;
+      this.remoteServiceProvider.getMessage(user_id).subscribe((res) => {
+        console.log('Message received: ' + JSON.stringify(res.json()));
+      }, (err) => {
+        console.error("Error in getting chat: " + JSON.stringify(err));
+      }, () => {
+        console.log("Complete getting chats");
+      });
+    });
+  }
+  // chat functions end
+
+  goToChat() {
+    this.navCtrl.push(ChatPage);
   }
 
   logoutUser() {
@@ -75,5 +115,6 @@ export class LocationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationPage');
+
   }
 }

@@ -1,0 +1,69 @@
+<!--
+  Generated template for the ChatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Hamama Chat
+    </ion-title>
+    <ion-buttons end>
+      <!--<button ion-button icon-only class="add-chat-button">-->
+        <!--<ion-icon name="person-add"></ion-icon>-->
+      <!--</button>-->
+      <!--<button ion-button icon-only class="options-button">-->
+        <!--<ion-icon name="more"></ion-icon>-->
+      <!--</button>-->
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="chats-page-content" #chatcontent>
+  <!--<ion-scroll scrollY="true" style="height: 80%">-->
+    <ion-list class="chats">
+      <!--<ion-item-sliding *ngFor="let chat of myChats">-->
+      <ion-item *ngFor="let chat of myChats">
+
+        <div class="chat-info">
+          <div *ngIf="chat.userto == 12" class="last-message-left chat-bubble left">
+            <span class="last-message-content last-message-content-text">
+              <b>Me: </b>
+              <br/>
+              {{chat.messages}}
+            </span>
+            <br/>
+            <span class="last-message-timestamp-left">{{ chat.date_added | amCalendar }}</span>
+          </div>
+
+          <div *ngIf="chat.userfrom == 12" class="last-message-right chat-bubble right">
+            <span class="last-message-content last-message-content-text">
+              <b>Admin:</b>
+              <br/>
+              {{chat.messages}}
+            </span>
+            <br/>
+            <span class="last-message-timestamp-right">{{ chat.date_added | amCalendar }}</span>
+          </div>
+        </div>
+
+        <!--<ion-item-options class="chat-options">-->
+          <!--<button ion-button color="danger" class="option option-remove">Remove</button>-->
+        <!--</ion-item-options>-->
+
+
+      </ion-item>
+    </ion-list>
+  <!--</ion-scroll>-->
+  <div class="item item-input">
+    <label class="item-input-wrapper">
+      <ion-input [(ngModel)]="message" type="text" placeholder="Message"></ion-input>
+    </label>
+    <button ion-button full primary (click)="sendMessage(message); message = ''" class="button">
+      Send
+    </button>
+  </div>
+
+</ion-content>

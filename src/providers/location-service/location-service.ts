@@ -52,7 +52,7 @@ export class LocationServiceProvider {
       this.zone.run(() => {
         this.lat = location.latitude;
         this.lng = location.longitude;
-        this.send(this.lat, this.lng);
+        this.send(this.lat, this.lng);  // sends the location to the specified url
       });
     }, (error) => {
       console.log(error);
@@ -75,7 +75,7 @@ export class LocationServiceProvider {
         this.zone.run(() => {
           this.lat = position.coords.latitude;
           this.lng = position.coords.longitude;
-          this.send(this.lat, this.lng);
+          this.send(this.lat, this.lng);  // sends the location to the specified url
         });
       }, (error) => {
         console.error('Can not run in the zone: ' + error);

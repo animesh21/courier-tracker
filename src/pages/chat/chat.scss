@@ -1,0 +1,41 @@
+page-chat {
+  .chats-page-content {
+
+    .chat-info {
+      //float: left;
+      margin: 10px 0 0 20px;
+
+      .last-message-left {
+        //left: 10px;
+        //text-align: left;
+        float: left;
+      }
+
+      .last-message-right {
+        //right: 10px;
+        //text-align: right;
+        float: right;
+      }
+
+      .last-message-timestamp-left {
+        float: left;
+        top: 10px;
+        left: 10px;
+        font-size: 14px;
+        color: #9A9898;
+      }
+
+      .last-message-timestamp-right {
+        float: right;
+        top: 10px;
+        left: 10px;
+        font-size: 14px;
+        color: #9A9898;
+      }
+    }
+  }
+
+  ion-scroll {
+    white-space: nowrap;
+  }
+}

@@ -13,24 +13,30 @@ import { LocationServiceProvider } from '../providers/location-service/location-
 import { Geolocation } from '@ionic-native/geolocation';
 import {LocationPage} from "../pages/location/location";
 import {BackgroundGeolocation} from "@ionic-native/background-geolocation";
+import { VideoPlayer } from '@ionic-native/video-player';
+import {ChatPage} from "../pages/chat/chat";
+import {MomentModule} from 'angular2-moment';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LocationPage
+    LocationPage,
+    ChatPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    MomentModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    LocationPage
+    LocationPage,
+    ChatPage
   ],
   providers: [
     StatusBar,
@@ -39,7 +45,8 @@ import {BackgroundGeolocation} from "@ionic-native/background-geolocation";
     RemoteServiceProvider,
     LocationServiceProvider,
     Geolocation,
-    BackgroundGeolocation
+    BackgroundGeolocation,
+    VideoPlayer
   ]
 })
 export class AppModule {}

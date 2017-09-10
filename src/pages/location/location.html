@@ -6,15 +6,15 @@
 -->
 <!--<ion-header>-->
 
-  <!--<ion-navbar>-->
-    <!--<ion-title>-->
-      <!--<img src="./assets/images/hamama_logo.png" alt="logo">-->
-    <!--</ion-title>-->
-    <!--<ion-buttons end>-->
-      <!--<button ion-button primary block (click)="logoutUser()">Logout</button>-->
-    <!--</ion-buttons>-->
+<!--<ion-navbar>-->
+<!--<ion-title>-->
+<!--<img src="./assets/images/hamama_logo.png" alt="logo">-->
+<!--</ion-title>-->
+<!--<ion-buttons end>-->
+<!--<button ion-button primary block (click)="logoutUser()">Logout</button>-->
+<!--</ion-buttons>-->
 
-  <!--</ion-navbar>-->
+<!--</ion-navbar>-->
 
 <!--</ion-header>-->
 
@@ -26,10 +26,14 @@
     </ion-buttons>
   </div>
   <div class="body">
-  <p>Hi, {{ name }}</p>
-  <ion-label text-center>Current Latitude: {{ locationServiceProvider.lat }}</ion-label>
-  <ion-label text-center>Current Longitude: {{ locationServiceProvider.lng }}</ion-label>
-  <button ion-button full primary (click)="start()">Start Tracking</button>
-  <button ion-button full primary (click)="stop()">Stop Tracking</button>
+    <p>Hi, {{ name }}</p>
+    <ion-label text-center>Current Latitude: {{ locationServiceProvider.lat }}</ion-label>
+    <ion-label text-center>Current Longitude: {{ locationServiceProvider.lng }}</ion-label>
+    <button ion-button full primary (click)="start()">Start Tracking</button>
+    <button ion-button full primary (click)="stop()">Stop Tracking</button>
+    <br/>
+    <div class="content">
+      <button ion-button full primary (click)="goToChat()" class="button">Chat</button>
+    </div>
   </div>
 </ion-content>
